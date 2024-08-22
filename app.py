@@ -1,3 +1,4 @@
+import os
 from flask import Flask, jsonify, request
 from flask_marshmallow import Marshmallow
 from flask_sqlalchemy import SQLAlchemy
@@ -11,7 +12,8 @@ import re
 
 app = Flask(__name__)
 CORS(app)
-app.config["SQLALCHEMY_DATABASE_URI"] = "mysql+mysqlconnector://root:Sennenga28!@localhost/project_e_commerce_db"
+app.config["SQLALCHEMY_DATABASE_URI"] = os.getenv('DATABASE_URL')
+# app.config["SQLALCHEMY_DATABASE_URI"] = "mysql+mysqlconnector://root:Sennenga28!@localhost/project_e_commerce_db"
 
 class Base(DeclarativeBase):
     pass
